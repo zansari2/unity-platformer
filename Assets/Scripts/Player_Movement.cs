@@ -61,9 +61,14 @@ public class Player_Movement : MonoBehaviour
         transform.localScale = theScale;
     }
 
-    // Check for ground
+    // Check for collision
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        // Set grounded state 
         isOnGround = true;
+        // Check if death
+        if (collision.gameObject.tag == "Kill_Player") {
+            Destroy(gameObject);
+        }
     }
 }
